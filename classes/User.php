@@ -62,7 +62,22 @@
              }
          }
 
+        public function register(){
+             $options = [
+                 "cost" => 14
+             ];
 
+             $password  = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
+
+             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+             $statement = $conn->prepare("insert into user (email, password) values (:email, :password)");
+             echo "test het werkt denk ik";
+             $statement->bindValue(":email", $this->getEmail());
+             $statement->bindValue(":password", $password);
+
+             return $statement->execute();
+
+        }
 
 
 

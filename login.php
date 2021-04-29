@@ -25,9 +25,19 @@
     <title>login page</title>
 </head>
 <body>
+    <div class="logo">hier komt logo in</div>
+
     <form action="" method="post">
         <input type="email" placeholder="email" name="email">
         <input type="password" placeholder="password" name="password">
+        <input type="submit" name="login" value="login">
     </form>
+
+    <?php if(!empty($error)): ?>
+    <div class="error">
+        <?php echo $error?>
+    </div>
+    <?php endif; ?>
+
 </body>
 </html>
