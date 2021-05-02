@@ -1,6 +1,10 @@
 <?php
     include_once(__DIR__ . "./classes/Item.php");
-    include_onde(__DIR__ . "./classes/User.php");
+    include_once(__DIR__ . "./classes/User.php");
+
+    $item = new Item();
+    $availableItems = $item->getAllAvailable();
+    $notAvailableItems = $item->getAllNotAvailable();
 ?>
 
 <!doctype html>
@@ -26,30 +30,32 @@
     </div>
 
     <section class="available">
+        <?php foreach($availableItems as $i): ?>
         <div class="item">
             <img src="#" alt="profilepicture">
             <div class="info">
-                <h3>name</h3>
-                <p>This is the description of this item. This will
-                    say more about this item and tell the use of it.
-                    There will be more information when you click on it.
-                </p>
+                <h3><?php echo $i["name"]; ?></h3>
+                <p><?php echo $i["description"] ?></p>
             </div>
         </div>
+        <?php endforeach; ?>
     </section>
 
     <section class="notAvailable">
+        <?php foreach($notAvailableItems as $i): ?>
         <div class="item">
             <img src="#" alt="profilepicture">
             <div class="info">
-                <h3>name</h3>
-                <p>This is the description of this item. This will
-                    say more about this item and tell the use of it.
-                    There will be more information when you click on it.
-                </p>
+                <h3><?php echo $i["name"]; ?></h3>
+                <p><?php echo $i["description"]; ?></p>
             </div>
         </div>
+        <?php endforeach; ?>
     </section>
+
+    <div class="plus">
+        add button
+    </div>
 
 </body>
 </html>
