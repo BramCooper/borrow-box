@@ -6,6 +6,23 @@
         private $owner;
         private $available;
         private $quality;
+        private $box;
+
+        /**
+         * @return mixed
+         */
+        public function getBox()
+        {
+            return $this->box;
+        }
+
+        /**
+         * @param mixed $box
+         */
+        public function setBox($box): void
+        {
+            $this->box = $box;
+        }
 
         /**
          * @return mixed
@@ -109,11 +126,12 @@
 
             session_start();
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("insert into item (name, description, posted_by, quality, available) values (:name, :description, :posted_by, :quality, true)");
+            $statement = $conn->prepare("insert into item (name, description, posted_by, quality, available, box_id) values (:name, :description, :posted_by, :quality, true, :box_id)");
             $statement->bindValue("name", $this->getName());
             $statement->bindValue(":description", $this->getDescription());
             $statement->bindValue(':posted_by', $_SESSION['id']);
             $statement->bindValue(":quality", $this->getQuality());
+            $statement->bindValue(":box_id", "1");
             $result = $statement->execute();
 
             if ($result){
@@ -121,6 +139,24 @@
             }else{
                 throw new Exception("something went wrong while adding your item");
             }
+        }
+
+        public function getInfo($id){
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("select * from item where id = :id");
+            $statement->bindValue(":id", $id);
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getUser($id){
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("select name from user where id = :id");
+            $statement->bindValue(":id", $id);
+            $statement->execute();
+            $result = $statement->fetch();
+            return $result;
         }
 
     }

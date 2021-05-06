@@ -10,6 +10,23 @@
         private $city;
         private $picture;
         private $id;
+        private $box;
+
+         /**
+          * @return mixed
+          */
+         public function getBox()
+         {
+             return $this->box;
+         }
+
+         /**
+          * @param mixed $box
+          */
+         public function setBox($box): void
+         {
+             $this->box = $box;
+         }
 
          /**
           * @return mixed
@@ -116,7 +133,6 @@
              $statement->bindValue(":password", $password);
 
              return $statement->execute();
-
         }
 
 

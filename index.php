@@ -32,11 +32,13 @@
     <section class="available">
         <?php foreach($availableItems as $i): ?>
         <div class="item">
-            <img src="#" alt="profilepicture">
-            <div class="info">
-                <h3><?php echo $i["name"]; ?></h3>
-                <p><?php echo $i["description"] ?></p>
-            </div>
+            <a href="">
+                <img src="details.php?id=<?php $i['id']; ?> alt=" profilepicture">
+                <div class="info">
+                    <h3><?php echo $i["name"]; ?></h3>
+                    <p><?php echo $i["description"] ?></p>
+                </div>
+            </a>
         </div>
         <?php endforeach; ?>
     </section>
