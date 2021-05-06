@@ -23,12 +23,14 @@
 
     <section class="users">
         <?php foreach($users as $user): ?>
-            <div class="user">
-                <img src="#" alt="profile pic">
-                <h3><?php echo $user["first_name"] ?></h3>
-                <p><?php echo $user["last_name"] ?></p>
-                <p><?php echo $user["email"] ?></p>
-            </div>
+            <a href="profile.php?id=<?php echo $user['id']?>">
+                <div class="user">
+                    <img src="#" alt="profile pic">
+                    <h3><?php echo $user["first_name"] ?></h3>
+                    <p><?php echo $user["last_name"] ?></p>
+                    <p><?php echo $user["email"] ?></p>
+                </div>
+            </a>
         <?php endforeach; ?>
     </section>
 </body>
