@@ -1,6 +1,7 @@
 <?php
-    include_once(__DIR__ . "./classes/Item.php");
+    include_once(__DIR__ . './classes/Box.php');
 
+    $box = new Box();
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -8,19 +9,19 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>use item</title>
+    <title>box info</title>
 </head>
 <body>
     <header>
         "nav"
-        <h1>use item</h1>
+        <h1>box info</h1>
     </header>
 
-<section>
-    <p><span class="bold">item I want to use: </span><?php echo $_GET['name']; ?></p>
-    <p><span class="bold">use till: </span>hier nog iets invullen!!!!</p>
+    <a href="#">users of this box</a>
+    <a href="#">return item</a>
+    <a href="#">add item</a>
+    <a href="#">location of the box</a>
 
-    <img src="#" alt="QR-code">
-</section>
+    <a href="#">switch from box</a>
 </body>
 </html>
