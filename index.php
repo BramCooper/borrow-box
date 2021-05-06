@@ -42,12 +42,12 @@
     </section>
 
     <section class="notAvailable">
-        <?php foreach($notAvailableItems as $i): ?>
+        <?php foreach($notAvailableItems as $ni): ?>
         <div class="item">
             <img src="#" alt="profilepicture">
             <div class="info">
-                <h3><?php echo $i["name"]; ?></h3>
-                <p><?php echo $i["description"]; ?></p>
+                <h3><?php echo $ni["name"]; ?></h3>
+                <p><?php echo $ni["description"]; ?></p>
             </div>
         </div>
         <?php endforeach; ?>

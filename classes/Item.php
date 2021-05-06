@@ -1,4 +1,5 @@
 <?php
+    include_once(__DIR__ . "./User.php");
     class Item{
         private $name;
         private $description;
@@ -102,6 +103,24 @@
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $result;
+        }
+
+        public function addItem(){
+
+            session_start();
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("insert into item (name, description, posted_by, quality, available) values (:name, :description, :posted_by, :quality, true)");
+            $statement->bindValue("name", $this->getName());
+            $statement->bindValue(":description", $this->getDescription());
+            $statement->bindValue(':posted_by', $_SESSION['id']);
+            $statement->bindValue(":quality", $this->getQuality());
+            $result = $statement->execute();
+
+            if ($result){
+                return $result;
+            }else{
+                throw new Exception("something went wrong while adding your item");
+            }
         }
 
     }

@@ -9,6 +9,45 @@
         private $postalcode;
         private $city;
         private $picture;
+        private $id;
+
+         /**
+          * @return mixed
+          */
+         public function getId()
+         {
+             session_start();
+             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+             $statement = $conn->prepare("select id from user where email = :email");
+             $statement->bindValue(':email', $_SESSION['email']);
+             $statement->execute();
+             $result = $statement->fetch();
+             return $result['id'];
+         }
+
+         /**
+          * @param mixed $id
+          */
+         public function setId($id): void
+         {
+             $this->id = $id;
+         }
+
+         /**
+          * @return mixed
+          */
+         public function getFirstname()
+         {
+             return $this->firstname;
+         }
+
+         /**
+          * @param mixed $firstname
+          */
+         public function setFirstname($firstname): void
+         {
+             $this->firstname = $firstname;
+         }
 
 
          /**
@@ -45,8 +84,9 @@
          }
 
          public function canLogin(){
+
              $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-             $statement = $conn->prepare("selectg * from users where (email) = (:email)");
+             $statement = $conn->prepare("select * from user where (email) = (:email)");
              $statement->bindValue(":email", $this->getEmail());
              $statement->execute();
              $result = $statement->fetch();
