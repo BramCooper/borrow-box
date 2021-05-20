@@ -108,7 +108,7 @@
 
         public function getAllAvailable(){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from items where (available) = (true)");
+            $statement = $conn->prepare("select * from item where (available) = true");
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -116,7 +116,7 @@
 
         public function getAllNotAvailable(){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from items where (available) = (false)");
+            $statement = $conn->prepare("select * from items where (available) = (false  )");
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $result;

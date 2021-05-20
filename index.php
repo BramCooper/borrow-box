@@ -4,6 +4,7 @@
 
     $item = new Item();
     $availableItems = $item->getAllAvailable();
+    var_dump($availableItems);
     $notAvailableItems = $item->getAllNotAvailable();
 ?>
 
@@ -22,10 +23,10 @@
         <h1>inventory</h1>
     </section>
 
-    <div class="search">
+    <div class="search__item">
         <form action="" method="post">
             <input type="text" name="search" placeholder="look for an item in this box">
-            <input type="submit">
+            <input type="submit" value="search">
         </form>
     </div>
 
@@ -33,7 +34,7 @@
         <?php foreach($availableItems as $i): ?>
         <div class="item">
             <a href="">
-                <img src="details.php?id=<?php $i['id']; ?> alt=" profilepicture">
+                <img src="details.php?id=<?php $i['id']; ?> alt="profilepicture">
                 <div class="info">
                     <h3><?php echo $i["name"]; ?></h3>
                     <p><?php echo $i["description"] ?></p>

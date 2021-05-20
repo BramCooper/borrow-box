@@ -17,4 +17,12 @@
         return $result;
     }
 
+    public function loadAll(){
+        $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+        $statement = $conn->prepare("select * from box");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
