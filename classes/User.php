@@ -135,13 +135,14 @@
              return $statement->execute();
         }
 
-        public function getBoxId(){
+        public function getBoxId($email){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select box_id from user where id = :id");
-            $statement->bindValue(":id", $_SESSION['id']);
+            $statement = $conn->prepare("select box_id from user where email = :email");
+            $statement->bindValue(":email", $email);
             $statement->execute();
             $result = $statement->fetch();
-            return $result;
+            var_dump($result);
+            return $result["box_id"];
         }
 
         public function getInfo($id){

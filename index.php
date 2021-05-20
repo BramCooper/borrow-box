@@ -1,11 +1,11 @@
 <?php
     include_once(__DIR__ . "./classes/Item.php");
     include_once(__DIR__ . "./classes/User.php");
-
+    session_start();
     $item = new Item();
-    $availableItems = $item->getAllAvailable();
-    var_dump($availableItems);
-    $notAvailableItems = $item->getAllNotAvailable();
+    $boxId = $_SESSION['box_id'];
+    $availableItems = $item->getAllAvailable($boxId);
+    $notAvailableItems = $item->getAllNotAvailable($boxId);
 ?>
 
 <!doctype html>
@@ -33,8 +33,8 @@
     <section class="available">
         <?php foreach($availableItems as $i): ?>
         <div class="item">
-            <a href="">
-                <img src="details.php?id=<?php $i['id']; ?> alt="profilepicture">
+            <a href="details.php?id=<?php echo $i['id']?>">
+                <img src="#" alt="profilepicture">
                 <div class="info">
                     <h3><?php echo $i["name"]; ?></h3>
                     <p><?php echo $i["description"] ?></p>

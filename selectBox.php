@@ -27,7 +27,7 @@
 
     <?php foreach($boxes as $b): ?>
         <section class="boxList">
-            <a href="boxDetail.php?id=<?php echo $b["id"]?>">
+            <a href="boxConfirm.php?id=<?php echo $b["id"]?>
                 <div class="box__<?php echo $b['id'];?>">
                     <h3 class="box__name"><?php echo $b["name"]; ?></h3>
                     <p class="box__adress"><?php echo $b["location"]; ?></p>
