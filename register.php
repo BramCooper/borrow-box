@@ -5,8 +5,8 @@
         $user = new User();
         $user ->setPassword($_POST["password"]);
         $user->setEmail($_POST["email"]);
-        echo "post niet empty";
         $user->register();
+        header("location: login.php");
     }
 
 ?>

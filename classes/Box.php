@@ -25,4 +25,14 @@
         return $result;
     }
 
+    public function getInfo($id){
+        $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+        $statement = $conn->prepare("select * from box where id = :id");
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        return $result;
+    }
+
 }

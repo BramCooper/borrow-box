@@ -162,5 +162,15 @@
             return $result;
         }
 
+        public function linkBox($box_id, $user_id){
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("UPDATE user SET box_id = (:box_id) WHERE user.id = (:user_id)");
+            $statement->bindValue(":box_id", $box_id);
+            $statement->bindValue(":user_id", $user_id);
+            $result = $statement->execute();
+            var_dump($result);
+            return $result;
+        }
+
 
 }
