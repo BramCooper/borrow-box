@@ -1,8 +1,10 @@
 <?php
     include_once(__DIR__ . "./classes/Item.php");
+    session_start();
     $i = new Item();
     $info = $i->getInfo($_GET['id']);
-    $owner = $i->getUser($_GET['id']);
+    $owner = $i->getUser($info["posted_by"]);
+    var_dump($owner);
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -19,10 +21,10 @@
     </header>
 
 <section class="info">
-    <p><span class="bold">specifications:</span><?php echo $info['name']?></p>
-    <p><span class="bold">added by:</span><?php echo $owner ?></p>
-    <p><span class="bold">description:</span><?php echo $info["description"]?></p>
-    <p><span class="bold">available till:</span></p>
+    <p><span class="bold">specifications: </span><?php echo $info['name']?></p>
+    <p><span class="bold">added by: </span><?php echo $owner ?></p>
+    <p><span class="bold">description: </span><?php echo $info["description"]?></p>
+    <p><span class="bold">available till: </span></p>
 
     <a href="useItem.php?name=<?php $info['name']; ?>">I want to use this item</a>
 </section>

@@ -19,7 +19,16 @@
 </head>
 <body>
     <section class="header">
-        "nav"
+        <div>
+            <a href="#" id="navbar">
+                <img src="./Hamburger_icon.svg%20(1).png" alt="hamburger icon">
+            </a>
+        </div>
+        <section class="navItems">
+            <a href="index.php">inventory</a>
+            <a href="profile.php">profile</a>
+            <a href="boxInfo.php">box info</a>
+        </section>
         <h1>inventory</h1>
     </section>
 
@@ -60,5 +69,6 @@
         add button
     </div>
 
+    <script src="navigation.js"></script>
 </body>
 </html>

@@ -117,7 +117,8 @@
 
         public function getAllNotAvailable($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from items where (available) = (false  )");
+            $statement = $conn->prepare("select * from items where (available) = (false) and box_id = (:id)");
+            $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -147,17 +148,17 @@
             $statement = $conn->prepare("select * from item where id = :id");
             $statement->bindValue(":id", $id);
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $result = $statement->fetch();
             return $result;
         }
 
         public function getUser($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select name from user where id = :id");
+            $statement = $conn->prepare("select first_name from user where id = :id");
             $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetch();
-            return $result;
+            return $result["first_name"];
         }
 
     }
