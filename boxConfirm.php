@@ -5,15 +5,14 @@
 
     $u = new User();
     $b = new Box();
-
+    $userId = $u->getId();
     $boxId = $_GET["id"];
-    $userId = $_SESSION['id'];
     $info = $b->getInfo($boxId);
-    var_dump($_POST);
+    var_dump($_SESSION);
     if(!empty($_POST)){
         echo "post niet leeg";
         $u->linkBox($boxId, $userId);
-        header("location: index.php");
+        //header("location: login.php");
     }
 
 ?><!doctype html>

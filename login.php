@@ -1,7 +1,10 @@
 <?php
     include_once(__DIR__ . "./classes/User.php");
+    include_once(__DIR__ . "./classes/Box.php");
     if(!empty($_POST)){
         $user = new User();
+        $box = new Box();
+
         $user->setEmail($_POST['email']);
         $user->setPassword($_POST['password']);
 
@@ -11,7 +14,13 @@
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['id'] = $user->getId();
                 $_SESSION["box_id"] = $user->getBoxId($_POST["email"]);
-                header("location: index.php");
+                $boxSet = $box->isSet($user->getId());
+                if($boxSet["box_id"] === null){
+                    header("location: selectBox.php");
+                }else{
+                    header("location: index.php");
+                }
+
             }
         }catch(\Throwable $th){
             $error = $th->getMessage();

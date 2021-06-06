@@ -6,7 +6,9 @@
         $user ->setPassword($_POST["password"]);
         $user->setEmail($_POST["email"]);
         $user->register();
-        header("location: login.php");
+        $_SESSION['email'] = $_POST['email'];
+        var_dump($_SESSION);
+        header("location: selectBox.php");
     }
 
 ?>

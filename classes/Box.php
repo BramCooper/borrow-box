@@ -35,4 +35,13 @@
         return $result;
     }
 
+    public function isSet($id){
+        $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+        $statement = $conn->prepare("select box_id from user where id = :id");
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        $result = $statement->fetch();
+        return $result;
+    }
+
 }

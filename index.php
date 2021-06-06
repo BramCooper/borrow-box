@@ -2,6 +2,7 @@
     include_once(__DIR__ . "./classes/Item.php");
     include_once(__DIR__ . "./classes/User.php");
     session_start();
+    $id = $_SESSION['id'];
     $item = new Item();
     $boxId = $_SESSION['box_id'];
     $availableItems = $item->getAllAvailable($boxId);
@@ -26,7 +27,7 @@
         </div>
         <section class="navItems">
             <a href="index.php">inventory</a>
-            <a href="profile.php">profile</a>
+            <a href="profile.php?id=<?php echo $id ?>">profile</a>
             <a href="boxInfo.php">box info</a>
         </section>
         <h1>inventory</h1>

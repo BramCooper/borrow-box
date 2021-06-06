@@ -150,7 +150,7 @@
             $statement = $conn->prepare("select * from user where id = :id");
             $statement->bindValue(":id",$id);
             $statement->execute();
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $result = $statement->fetch();
             return $result;
         }
 
