@@ -1,7 +1,12 @@
 <?php
     include_once(__DIR__ . './classes/Box.php');
-
+    session_start();
     $box = new Box();
+    $id = $_SESSION['id'];
+    $boxId = $_SESSION['box_id'];
+    $boxInfo = $box->getInfo($boxId);
+    $boxAdress = $boxInfo["location"];
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -12,16 +17,27 @@
     <title>box info</title>
 </head>
 <body>
-    <header>
-        "nav"
-        <h1>box info</h1>
-    </header>
+<section class="header">
+    <div>
+        <a href="#" id="navbar">
+            <img src="./Hamburger_icon.svg%20(1).png" alt="hamburger icon">
+        </a>
+    </div>
+    <section class="navItems">
+        <a href="index.php">inventory</a>
+        <a href="profile.php?id=<?php echo $id ?>">profile</a>
+        <a href="boxInfo.php">box info</a>
+    </section>
+    <h1>box info</h1>
+</section>
 
-    <a href="#">users of this box</a>
+    <a href="boxUsers.php">users of this box</a>
     <a href="#">return item</a>
     <a href="#">add item</a>
     <a href="#">location of the box</a>
 
     <a href="#">switch from box</a>
+
+<script src="navigation.js"></script>
 </body>
 </html>

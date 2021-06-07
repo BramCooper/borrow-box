@@ -10,10 +10,10 @@
 
     public function loadUsers($id){
         $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-        $statement = $conn->prepare("select name from user where box_id = :box_id");
+        $statement = $conn->prepare("select * from user where box_id = :box_id");
         $statement->bindValue(":box_id", $id);
         $statement->execute();
-        $result = $statement->fethAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 

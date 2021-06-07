@@ -2,9 +2,10 @@
     include_once(__DIR__ . "./classes/Box.php");
     include_once(__DIR__ . "./classes/User.php");
 
+    session_start();
     $b = new Box();
     $u = new User();
-    $boxId = $u->getBoxId();
+    $boxId = $_SESSION["box_id"];
     $users = $b->loadUsers($boxId);
 ?><!doctype html>
 <html lang="en">
@@ -16,10 +17,19 @@
     <title>box users</title>
 </head>
 <body>
-    <header>
-        "nav"
-        <h1>users of this box</h1>
-    </header>
+<section class="header">
+    <div>
+        <a href="#" id="navbar">
+            <img src="./Hamburger_icon.svg%20(1).png" alt="hamburger icon">
+        </a>
+    </div>
+    <section class="navItems">
+        <a href="index.php">inventory</a>
+        <a href="profile.php?id=<?php echo $id ?>">profile</a>
+        <a href="boxInfo.php">box info</a>
+    </section>
+    <h1>users of this box</h1>
+</section>
 
     <section class="users">
         <?php foreach($users as $user): ?>
@@ -33,5 +43,6 @@
             </a>
         <?php endforeach; ?>
     </section>
+<script src="navigation.js"></script>
 </body>
 </html>
