@@ -5,6 +5,11 @@
         $user = new User();
         $user ->setPassword($_POST["password"]);
         $user->setEmail($_POST["email"]);
+        $user->setFirstname($_POST['firstname']);
+        $user->setLastname($_POST['lastname']);
+        $user->setStreetname($_POST['streetname']);
+        $user->setCity($_POST['city']);
+
         $user->register();
         $_SESSION['email'] = $_POST['email'];
         var_dump($_SESSION);

@@ -2,15 +2,114 @@
      class User{
         private $firstname;
         private $lastname;
-        private $email;
-        private $password;
-        private $streetname;
-        private $housenumber;
-        private $postalcode;
-        private $city;
-        private $picture;
-        private $id;
-        private $box;
+         private $email;
+         private $password;
+         private $streetname;
+         private $housenumber;
+         private $postalcode;
+         private $city;
+         private $picture;
+         private $id;
+         private $box;
+         /**
+          * @return mixed
+          */
+         public function getPicture()
+         {
+             return $this->picture;
+         }
+
+         /**
+          * @param mixed $picture
+          */
+         public function setPicture($picture): void
+         {
+             $this->picture = $picture;
+         }
+
+
+         /**
+          * @return mixed
+          */
+         public function getCity()
+         {
+             return $this->city;
+         }
+
+         /**
+          * @param mixed $city
+          */
+         public function setCity($city): void
+         {
+             $this->city = $city;
+         }
+
+
+         /**
+          * @return mixed
+          */
+         public function getPostalcode()
+         {
+             return $this->postalcode;
+         }
+
+         /**
+          * @param mixed $postalcode
+          */
+         public function setPostalcode($postalcode): void
+         {
+             $this->postalcode = $postalcode;
+         }
+
+
+         /**
+          * @return mixed
+          */
+         public function getHousenumber()
+         {
+             return $this->housenumber;
+         }
+
+         /**
+          * @param mixed $housenumber
+          */
+         public function setHousenumber($housenumber): void
+         {
+             $this->housenumber = $housenumber;
+         }
+         /**
+          * @return mixed
+          */
+         public function getStreetname()
+         {
+             return $this->streetname;
+         }
+
+         /**
+          * @param mixed $streetname
+          */
+         public function setStreetname($streetname): void
+         {
+             $this->streetname = $streetname;
+         }
+
+
+         /**
+          * @return mixed
+          */
+         public function getLastname()
+         {
+             return $this->lastname;
+         }
+
+         /**
+          * @param mixed $lastname
+          */
+         public function setLastname($lastname): void
+         {
+             $this->lastname = $lastname;
+         }
+
 
          /**
           * @return mixed
@@ -127,9 +226,13 @@
              $password  = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
 
              $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-             $statement = $conn->prepare("insert into user (email, password) values (:email, :password)");
+             $statement = $conn->prepare("insert into user (email, password, firstname, lastname, city, streetname) values (:email, :password, :firstname, :lastname, :city, :streetname)");
              echo "test het werkt denk ik";
              $statement->bindValue(":email", $this->getEmail());
+             $statement->bindValue(":firstname", $this->getFirstname());
+             $statement->bindValue(":lastname", $this->getLastname());
+             $statement->bindValue(":city", $this->getCity());
+             $statement->bindValue(":streetname", $this->getStreetname());
              $statement->bindValue(":password", $password);
 
              return $statement->execute();

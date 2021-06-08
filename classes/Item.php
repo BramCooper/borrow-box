@@ -117,7 +117,7 @@
 
         public function getAllNotAvailable($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from items where (available) = (false) and box_id = (:id) and report = 0");
+            $statement = $conn->prepare("select * from items where (available) = 0 and box_id = (:id) and report = 0");
             $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
