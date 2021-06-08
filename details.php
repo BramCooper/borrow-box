@@ -1,7 +1,7 @@
 <?php
     include_once(__DIR__ . "/classes/Item.php");
     session_start();
-    var_dump($_SESSION['id']);
+    $id = $_SESSION['id'];
     $i = new Item();
     $info = $i->getInfo($_GET['id']);
     $owner = $i->getUser($info["posted_by"]);
@@ -15,10 +15,20 @@
     <title><?php echo $info['name']; ?></title>
 </head>
 <body>
-    <header>
-        "nav"
-        <h1><?php echo $info['name']; ?></h1>
-    </header>
+<section class="header">
+    <div>
+        <a href="#" id="navbar">
+            <img src="./Hamburger_icon.svg%20(1).png" alt="hamburger icon">
+        </a>
+    </div>
+    <section class="navItems">
+        <a href="index.php">inventory</a>
+        <a href="profile.php?id=<?php echo $id ?>">profile</a>
+        <a href="boxInfo.php">box info</a>
+        <a href="logout.php">logout</a>
+    </section>
+    <h1>users of this box</h1>
+</section>
 
 <section class="info">
     <p><span class="bold">specifications: </span><?php echo $info['name']?></p>

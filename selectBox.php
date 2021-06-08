@@ -3,6 +3,8 @@
 
     $b = new Box();
     $boxes = $b->loadAll();
+    session_start();
+    $id = $_SESSION['id'];
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -13,10 +15,20 @@
     <title>select box</title>
 </head>
 <body>
-    <section class="header">
-        "nav"
-        <h1>select a box</h1>
+<section class="header">
+    <div>
+        <a href="#" id="navbar">
+            <img src="./Hamburger_icon.svg%20(1).png" alt="hamburger icon">
+        </a>
+    </div>
+    <section class="navItems">
+        <a href="index.php">inventory</a>
+        <a href="profile.php?id=<?php echo $id ?>">profile</a>
+        <a href="boxInfo.php">box info</a>
+        <a href="logout.php">logout</a>
     </section>
+    <h1>Select a box</h1>
+</section>
 
     <div class="search__box">
         <form action="" method="post">

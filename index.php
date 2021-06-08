@@ -29,6 +29,7 @@
             <a href="index.php">inventory</a>
             <a href="profile.php?id=<?php echo $id ?>">profile</a>
             <a href="boxInfo.php">box info</a>
+            <a href="logout.php">logout</a>
         </section>
         <h1>inventory</h1>
     </section>

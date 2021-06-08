@@ -27,13 +27,14 @@
         <a href="index.php">inventory</a>
         <a href="profile.php?id=<?php echo $id ?>">profile</a>
         <a href="boxInfo.php">box info</a>
+        <a href="logout.php">logout</a>
     </section>
     <h1>box info</h1>
 </section>
 
     <a href="boxUsers.php">users of this box</a>
-    <a href="#">return item</a>
-    <a href="#">add item</a>
+    <a href="returnItem.php">return item</a>
+    <a href="addItem.php">add item</a>
     <a href="#">location of the box</a>
 
     <a href="#">switch from box</a>

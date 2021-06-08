@@ -17,9 +17,9 @@
                 $_SESSION["box_id"] = $user->getBoxId($_POST["email"]);
                 $boxSet = $box->isSet($user->getId());
                 if($boxSet["box_id"] === null){
-                    //header("location: selectBox.php");
+                    header("location: selectBox.php");
                 }else{
-                    //header("location: index.php");
+                    header("location: index.php");
                 }
 
             }
