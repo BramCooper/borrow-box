@@ -27,7 +27,7 @@
         <a href="boxInfo.php">box info</a>
         <a href="logout.php">logout</a>
     </section>
-    <h1>users of this box</h1>
+    <h1><?php echo $info["name"]; ?></h1>
 </section>
 
 <section class="info">

@@ -1,11 +1,17 @@
 <?php
-    include_once(__DIR__ . '/classes/Box.php');
+    include_once(__DIR__ . "/classes/Box.php");
+    include_once(__DIR__ . "/classes/User.php");
     session_start();
-    $box = new Box();
     $id = $_SESSION['id'];
-    $boxId = $_SESSION['box_id'];
-    $boxInfo = $box->getInfo($boxId);
-    $boxAdress = $boxInfo["location"];
+
+    $b = new Box();
+    $u = new User();
+
+    $boxes = $b->loadAll();
+    if(!empty($_POST)){
+        $u->linkBox($id, $_GET['id']);
+        header("location: index.php");
+    }
 
 ?><!doctype html>
 <html lang="en">
@@ -14,7 +20,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>box info</title>
+    <title>switch from box</title>
 </head>
 <body>
 <section class="header">
@@ -29,16 +35,19 @@
         <a href="boxInfo.php">box info</a>
         <a href="logout.php">logout</a>
     </section>
-    <h1>box info</h1>
+    <h1>switch from box</h1>
 </section>
 
-    <a href="boxUsers.php">users of this box</a>
-    <a href="returnItem.php">return item</a>
-    <a href="addItem.php">add item</a>
-    <a href="#">location of the box</a>
+<?php foreach($boxes as $b): ?>
+    <section class="boxList">
+        <a href="boxConfirm.php?id=<?php echo $b["id"]?>"
+        <div class="box__<?php echo $b['id'];?>">
+            <h3 class="box__name"><?php echo $b["name"]; ?></h3>
+            <p class="box__adress"><?php echo $b["location"]; ?></p>
+        </div>
+        </a>
 
-    <a href="switchBox.php">switch from box</a>
-
-<script src="navigation.js"></script>
+    </section>
+<?php endforeach; ?>
 </body>
 </html>

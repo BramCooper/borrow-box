@@ -8,11 +8,9 @@
     $userId = $u->getId();
     $boxId = $_GET["id"];
     $info = $b->getInfo($boxId);
-    var_dump($_SESSION);
     if(!empty($_POST)){
-        echo "post niet leeg";
         $u->linkBox($boxId, $userId);
-        //header("location: login.php");
+        header("location: index.php");
     }
 
 ?><!doctype html>

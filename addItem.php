@@ -1,5 +1,8 @@
 <?php
     include_once(__DIR__ . "/classes/Item.php");
+
+    session_start();
+    $id = $_SESSION['id'];
     if(!empty($_POST)){
         try {
             $i = new Item();
@@ -23,10 +26,20 @@
     <title>add an item</title>
 </head>
 <body>
-    <header>
-        "nav"
-        <h1>add item</h1>
-    </header>
+<section class="header">
+    <div>
+        <a href="#" id="navbar">
+            <img src="./Hamburger_icon.svg%20(1).png" alt="hamburger icon">
+        </a>
+    </div>
+    <section class="navItems">
+        <a href="index.php">inventory</a>
+        <a href="profile.php?id=<?php echo $id ?>">profile</a>
+        <a href="boxInfo.php">box info</a>
+        <a href="logout.php">logout</a>
+    </section>
+    <h1>add an item</h1>
+</section>
 
     <?php if(isset($error)): ?>
     <div class="error">
