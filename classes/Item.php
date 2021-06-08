@@ -108,7 +108,7 @@
 
         public function getAllAvailable($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from item where (available) = true and box_id = (:id)");
+            $statement = $conn->prepare("select * from item where (available) = true and box_id = (:id) and report = 0");
             $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -117,7 +117,7 @@
 
         public function getAllNotAvailable($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from items where (available) = (false) and box_id = (:id)");
+            $statement = $conn->prepare("select * from items where (available) = (false) and box_id = (:id) and report = 0");
             $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -145,7 +145,7 @@
 
         public function getInfo($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from item where id = :id");
+            $statement = $conn->prepare("select * from item where id = :id and report = 0");
             $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetch();
@@ -172,6 +172,14 @@
         public function setItemAvailable($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
             $statement = $conn->prepare("update item set available = 1 where id = :id");
+            $statement->bindValue(":id", $id);
+            $result = $statement->execute();
+            return $result;
+        }
+
+        public function reportItem($id){
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("update item set report = 1 where id = :id");
             $statement->bindValue(":id", $id);
             $result = $statement->execute();
             return $result;

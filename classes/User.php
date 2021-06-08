@@ -155,7 +155,7 @@
 
         public function getItems($id){
             $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-            $statement = $conn->prepare("select * from item where posted_by = :id");
+            $statement = $conn->prepare("select * from item where posted_by = :id and report = 0");
             $statement->bindValue(":id", $id);
             $statement->execute();
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);

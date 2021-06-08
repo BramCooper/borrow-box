@@ -37,6 +37,7 @@
     <p><span class="bold">available till: </span></p>
 
     <a href="useItem.php?id=<?php echo $_GET['id']; ?>">I want to use this item</a>
+    <a href="report.php?id=<?php echo $_GET['id'] ?>">report this item</a>
 </section>
 </body>
 </html>
