@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "./User.php");
+    include_once(__DIR__ . "/User.php");
     class Item{
         private $name;
         private $description;
@@ -159,6 +159,22 @@
             $statement->execute();
             $result = $statement->fetch();
             return $result["first_name"];
+        }
+
+        public function setUnavailable($id){
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("update item set available = 0 where id = :id");
+            $statement->bindValue(":id", $id);
+            $result = $statement->execute();
+            return $result;
+    }
+
+        public function setItemAvailable($id){
+            $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
+            $statement = $conn->prepare("update item set available = 1 where id = :id");
+            $statement->bindValue(":id", $id);
+            $result = $statement->execute();
+            return $result;
         }
 
     }

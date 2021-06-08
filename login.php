@@ -1,6 +1,6 @@
 <?php
-    include_once(__DIR__ . "./classes/User.php");
-    include_once(__DIR__ . "./classes/Box.php");
+    include_once(__DIR__ . "/classes/User.php");
+    include_once(__DIR__ . "/classes/Box.php");
     if(!empty($_POST)){
         $user = new User();
         $box = new Box();
@@ -13,12 +13,13 @@
                 session_start();
                 $_SESSION['email'] = $_POST['email'];
                 $_SESSION['id'] = $user->getId();
+                var_dump($_SESSION["id"]);
                 $_SESSION["box_id"] = $user->getBoxId($_POST["email"]);
                 $boxSet = $box->isSet($user->getId());
                 if($boxSet["box_id"] === null){
-                    header("location: selectBox.php");
+                    //header("location: selectBox.php");
                 }else{
-                    header("location: index.php");
+                    //header("location: index.php");
                 }
 
             }

@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "./classes/User.php");
+    include_once(__DIR__ . "/classes/User.php");
 
     $id = $_GET['id'];
     $u = new User();

@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "./classes/Item.php");
+    include_once(__DIR__ . "/classes/Item.php");
     if(!empty($_POST)){
         try {
             $i = new Item();

@@ -1,10 +1,10 @@
 <?php
-    include_once(__DIR__ . "./classes/Item.php");
+    include_once(__DIR__ . "/classes/Item.php");
     session_start();
+    var_dump($_SESSION['id']);
     $i = new Item();
     $info = $i->getInfo($_GET['id']);
     $owner = $i->getUser($info["posted_by"]);
-    var_dump($owner);
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -26,7 +26,7 @@
     <p><span class="bold">description: </span><?php echo $info["description"]?></p>
     <p><span class="bold">available till: </span></p>
 
-    <a href="useItem.php?name=<?php $info['name']; ?>">I want to use this item</a>
+    <a href="useItem.php?id=<?php echo $_GET['id']; ?>">I want to use this item</a>
 </section>
 </body>
 </html>

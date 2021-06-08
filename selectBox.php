@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "./classes/Box.php");
+    include_once(__DIR__ . "/classes/Box.php");
 
     $b = new Box();
     $boxes = $b->loadAll();

@@ -1,11 +1,12 @@
 <?php
-    include_once(__DIR__ . "./classes/Box.php");
-    include_once(__DIR__ . "./classes/User.php");
+    include_once(__DIR__ . "/classes/Box.php");
+    include_once(__DIR__ . "/classes/User.php");
 
     session_start();
     $b = new Box();
     $u = new User();
     $boxId = $_SESSION["box_id"];
+    $id = $_SESSION ["id"];
     $users = $b->loadUsers($boxId);
 ?><!doctype html>
 <html lang="en">

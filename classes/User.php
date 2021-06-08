@@ -141,7 +141,6 @@
             $statement->bindValue(":email", $email);
             $statement->execute();
             $result = $statement->fetch();
-            var_dump($result);
             return $result["box_id"];
         }
 

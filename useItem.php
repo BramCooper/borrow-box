@@ -1,5 +1,17 @@
 <?php
-    include_once(__DIR__ . "./classes/Item.php");
+    include_once(__DIR__ . "/classes/Item.php");
+    include_once(__DIR__ . "/classes/Use_item.php");
+    session_start();
+    $i = new Item();
+    $u = new Use_item();
+    $itemId = $_GET['id'];
+    $info = $i->getInfo($itemId);
+    $id = $_SESSION['id'];
+
+    if (!empty($_POST)){
+        $i->setUnavailable($itemId);
+        $u->UseItem($id, $itemId);
+    }
 
 ?><!doctype html>
 <html lang="en">
@@ -17,10 +29,13 @@
     </header>
 
 <section>
-    <p><span class="bold">item I want to use: </span><?php echo $_GET['name']; ?></p>
+    <p><span class="bold">item I want to use: </span><?php echo $info['name']; ?></p>
     <p><span class="bold">use till: </span>hier nog iets invullen!!!!</p>
 
     <img src="#" alt="QR-code">
+    <form action="" method="post">
+        <input type="submit" value="confirm" name="submit">
+    </form>
 </section>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
-    include_once(__DIR__ . "./classes/Item.php");
-    include_once(__DIR__ . "./classes/User.php");
+    include_once(__DIR__ . "/classes/Item.php");
+    include_once(__DIR__ . "/classes/User.php");
     session_start();
     $id = $_SESSION['id'];
     $item = new Item();

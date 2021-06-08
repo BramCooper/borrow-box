@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . './classes/Box.php');
+    include_once(__DIR__ . '/classes/Box.php');
     session_start();
     $box = new Box();
     $id = $_SESSION['id'];
