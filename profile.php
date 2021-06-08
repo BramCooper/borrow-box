@@ -5,7 +5,6 @@
     $u = new User();
     $info = $u->getInfo($id);
     $items = $u->getItems($id);
-    var_dump($info["email"]);
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -38,9 +37,9 @@
     <img src="#" alt="profile picture">
     <h3>name</h3>
 
-    <p><span class="bold">adress: </span><?php echo $info['street']; ?> <?php echo $info['housenumber'];?> <?php echo $info['city'] ?></p>
+    <p><span class="bold">adress: </span><?php echo $info['street']; ?> - <?php echo $info['city'] ?></p>
     <p><span class="bold">email: </span><?php echo $info["email"] ?></p>
-    <p><span class="bold">telephone number: </span>12345132</p>
+    <p><span class="bold">telephone number: </span><?php echo $info["phone_number"] ?></p>
     <p><span class="bold">age: </span>20 years</p>
 </section>
 

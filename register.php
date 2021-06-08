@@ -37,9 +37,10 @@
         <input type="text" name="firstname" placeholder="firstname">
         <input type="text" name="lastname" placeholder="lastname">
         <input type="text" name="email" placeholder="email">
+        <input type="number" name="phonenumber" placeholder="phone number">
         <input type="text" name="streetname" placeholder="streetname">
         <input type="text" name="city" placeholder="city">
-        <input type="password" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="password">µ
         <input type="submit" value="next step">
     </form>
 

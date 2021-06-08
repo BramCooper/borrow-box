@@ -11,6 +11,23 @@
          private $picture;
          private $id;
          private $box;
+         private $phoneNumber;
+
+         /**
+          * @return mixed
+          */
+         public function getPhoneNumber()
+         {
+             return $this->phoneNumber;
+         }
+
+         /**
+          * @param mixed $phoneNumber
+          */
+         public function setPhoneNumber($phoneNumber): void
+         {
+             $this->phoneNumber = $phoneNumber;
+         }
          /**
           * @return mixed
           */
@@ -226,13 +243,14 @@
              $password  = password_hash($this->getPassword(), PASSWORD_DEFAULT, $options);
 
              $conn = new PDO('mysql:host=localhost;dbname=borrowbox_db', "root", "root");
-             $statement = $conn->prepare("insert into user (email, password, firstname, lastname, city, streetname) values (:email, :password, :firstname, :lastname, :city, :streetname)");
+             $statement = $conn->prepare("insert into user (email, password, firstname, lastname, city, street phone_number) values (:email, :password, :firstname, :lastname, :city, :streetname, :phonenumber)");
              echo "test het werkt denk ik";
              $statement->bindValue(":email", $this->getEmail());
              $statement->bindValue(":firstname", $this->getFirstname());
              $statement->bindValue(":lastname", $this->getLastname());
              $statement->bindValue(":city", $this->getCity());
              $statement->bindValue(":streetname", $this->getStreetname());
+             $statement->bindValue(":phonenumber", $this->getPhoneNumber());
              $statement->bindValue(":password", $password);
 
              return $statement->execute();
